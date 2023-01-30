@@ -17,7 +17,7 @@ namespace MishlohaApi.Controllers
 
         // GET api/<GithubRepoController>/1
         [HttpGet]
-        public IActionResult Get(Enums.Timeframe timeframe, int page)    //TODO: Check enum out of range
+        public IActionResult Get(Enums.Timeframe timeframe, int page)
         {
             try
             {
