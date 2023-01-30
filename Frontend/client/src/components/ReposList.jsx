@@ -1,5 +1,5 @@
-import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
-import {Box, Typography, MenuItem, Avatar, Select, Button, FormGroup} from "@mui/material";
+import React, {useEffect, useState} from "react";
+import {Box, Typography, MenuItem, Select} from "@mui/material";
 import RepoCard from "./RepoCard";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "../utils/axios";

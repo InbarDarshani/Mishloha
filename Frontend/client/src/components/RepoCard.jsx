@@ -1,5 +1,5 @@
-import React, {useCallback, useContext, useEffect, useState} from "react";
-import {Box, Card, CardContent, CardActions, CardMedia, Typography, Avatar, Button, CardActionArea, Modal, ToggleButton, Link} from "@mui/material";
+import React, {useContext, useState} from "react";
+import {Box, Card, CardContent, CardActions, Typography, Avatar, Button, CardActionArea, Modal, ToggleButton, Link} from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {Context} from "./Context";
 
@@ -10,7 +10,7 @@ const RepoCard = ({repo}) => {
   return (
     <>
       <RepoDetailsModal repo={repo} isOpen={isOpen} onClose={() => setIsOpen(false)} />
-      <Card variant="outlined" sx={{width: "auto", textAlign: "center"}}>
+      <Card variant="outlined" sx={{textAlign: "center", m: 1}}>
         <CardActionArea onClick={() => setIsOpen(true)}>
           <CardContent>
             <Typography variant="h5" gutterBottom>
@@ -26,7 +26,7 @@ const RepoCard = ({repo}) => {
         </CardActionArea>
         <CardActions>
           <ToggleButton value="favorite" selected={getIsFavorite(repo.id)} onChange={() => toggleFavorite(repo)}>
-            <FavoriteIcon /> Add to favorites repositories
+            <FavoriteIcon /> {getIsFavorite(repo.id) ? "Remove from favorites" : "Add to favorites"}
           </ToggleButton>
         </CardActions>
       </Card>
@@ -40,14 +40,13 @@ const RepoDetailsModal = ({repo, isOpen, onClose}) => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
     bgcolor: "background.paper",
     boxShadow: 24,
     p: 4,
   };
 
   return (
-    <Modal open={isOpen} onClose={onClose} sx={{}}>
+    <Modal open={isOpen} onClose={onClose}>
       <Box sx={style}>
         <Typography>Language: {repo.language ? repo.language : "Unspecified"}</Typography>
         <Typography>Forks: {repo.forksCount}</Typography>
