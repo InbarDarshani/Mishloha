@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router-dom";
-import {AppBar, Box, Toolbar, IconButton, Typography} from "@mui/material";
+import {AppBar, Box, Toolbar, IconButton, Typography, Link} from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const Header = () => {
@@ -9,9 +9,9 @@ const Header = () => {
     <Box sx={{width: "100%"}}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" sx={{flexGrow: 1}}>
+          <Link href="/" color="inherit" underline="none" sx={{flexGrow: 1}}>
             Mishloha Home Assignment
-          </Typography>
+          </Link>
           <IconButton color="inherit" onClick={() => navigate("/favorites")}>
             <FavoriteIcon />
             <Typography>Favorites</Typography>
