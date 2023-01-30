@@ -1,7 +1,14 @@
 import "./App.css";
+import Layout from "./components/Layout";
+import ReposList from "./components/ReposList";
 
 function App() {
-  return <div></div>;
+  return (
+      <Layout>
+        <ReposList />
+      </Layout>
+
+  );
 }
 
 export default App;
