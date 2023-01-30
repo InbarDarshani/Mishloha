@@ -3,6 +3,7 @@ import {Box, Typography, MenuItem, Select} from "@mui/material";
 import RepoCard from "./RepoCard";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "../utils/axios";
+import {textAlign} from "@mui/system";
 
 const ReposList = () => {
   const [timeframe, setTimeframe] = useState(1);
@@ -39,7 +40,13 @@ const ReposList = () => {
           fetchPage();
         }}
       />
-      <InfiniteScroll dataLength={data.length} next={fetchPage} hasMore={true} loader={isError ? <Typography>Error fetching data</Typography> : <Typography>Loading...</Typography>} endMessage={<Typography>You have seen it all</Typography>}>
+      <InfiniteScroll
+        dataLength={data.length}
+        next={fetchPage}
+        hasMore={true}
+        loader={<Typography>{isError ? "Error fetching data" : "Loading..."}</Typography>}
+        endMessage={<Typography>You have seen it all</Typography>}
+      >
         {data.map((repo, index) => (
           <Box key={index} data-repo-id={repo.id}>
             <RepoCard repo={repo} />
@@ -59,7 +66,7 @@ const TimeframeFilter = ({onSelect}) => {
 
   return (
     <Box sx={{display: "inline-flex"}}>
-      <Typography sx={{mr: 1, alignSelf: "center"}}>Repositories Created at the past</Typography>
+      <Typography sx={{mr: 1, alignSelf: "center"}}>Repositories created at the past</Typography>
       <Select value={selectedTimeframe} onChange={handleSelect} variant="standard">
         <MenuItem value={1}>Day</MenuItem>
         <MenuItem value={2}>Week</MenuItem>
