@@ -7,6 +7,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Add CORS for react client in development env
+builder.Services.AddCors(options => {
+    options.AddPolicy("MyAllowedOrigins",
+    policy =>
+    {
+        policy.WithOrigins("http://localhost:3000", "https://localhost:3000") 
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,5 +32,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("MyAllowedOrigins");
 
 app.Run();
