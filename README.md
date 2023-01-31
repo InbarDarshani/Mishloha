@@ -10,12 +10,14 @@ This application displays the most trending repositories on GitHub that were cre
 The backend API is built with .NET Core 6 with the following architecture:
 
 **GithubRepoController**
-Exposes endpoints for communication with the frontend:
-GET ​/api​/GithubRepo?timeframe={timeframe}&page={page}
+Exposes endpoints for communication with the frontend: 
+
+    GET ​/api​/GithubRepo?timeframe={timeframe}&page={page}
 
 **Service Layer - GithubRepoService**
 Interacts with Github API and replies with relevant data.
-SearchByTimeframe(Enums.Timeframe timeframe, int page)
+
+    SearchByTimeframe(Enums.Timeframe timeframe, int page)
 
 **Application Data Model - GithubRepo**
 Holds the necessary properties for representing a Github repository.
