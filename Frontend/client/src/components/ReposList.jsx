@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
-import {Box, Typography, MenuItem, Select} from "@mui/material";
-import RepoCard from "./RepoCard";
+import {useEffect, useState} from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import {Stack, Typography} from "@mui/material";
+import RepoCard from "./RepoCard";
+import TimeframeFilter from "./TimeframeFilter";
 import axios from "../utils/axios";
-import {textAlign} from "@mui/system";
 
 const ReposList = () => {
   const [timeframe, setTimeframe] = useState(1);
@@ -32,47 +32,28 @@ const ReposList = () => {
 
   return (
     <>
-      <TimeframeFilter
-        onSelect={(selectedTimeframe) => {
-          setTimeframe(selectedTimeframe);
-          setData([]);
-          setPage(1);
-          fetchPage();
-        }}
-      />
-      <InfiniteScroll
-        dataLength={data.length}
-        next={fetchPage}
-        hasMore={true}
-        loader={<Typography>{isError ? "Error fetching data" : "Loading..."}</Typography>}
-        endMessage={<Typography>You have seen it all</Typography>}
-      >
-        {data.map((repo, index) => (
-          <Box key={index} data-repo-id={repo.id}>
-            <RepoCard repo={repo} />
-          </Box>
-        ))}
-      </InfiniteScroll>
+      <Stack justifyContent="center" alignItems="center">
+        <TimeframeFilter
+          onSelect={(selectedTimeframe) => {
+            setTimeframe(selectedTimeframe);
+            setData([]);
+            setPage(1);
+            fetchPage();
+          }}
+        />
+        <InfiniteScroll
+          dataLength={data.length}
+          next={fetchPage}
+          hasMore={true}
+          loader={<Typography>{isError ? "Error fetching data" : "Loading..."}</Typography>}
+          endMessage={<Typography>You have seen it all</Typography>}
+        >
+          {data.map((repo, index) => (
+            <RepoCard repo={repo} key={index} />
+          ))}
+        </InfiniteScroll>
+      </Stack>
     </>
-  );
-};
-
-const TimeframeFilter = ({onSelect}) => {
-  const [selectedTimeframe, setSelectedTimeframe] = useState(1);
-  const handleSelect = (event) => {
-    setSelectedTimeframe(event.target.value);
-    onSelect(event.target.value);
-  };
-
-  return (
-    <Box sx={{display: "inline-flex"}}>
-      <Typography sx={{mr: 1, alignSelf: "center"}}>Repositories created at the past</Typography>
-      <Select value={selectedTimeframe} onChange={handleSelect} variant="standard">
-        <MenuItem value={1}>Day</MenuItem>
-        <MenuItem value={2}>Week</MenuItem>
-        <MenuItem value={3}>Month</MenuItem>
-      </Select>
-    </Box>
   );
 };
 

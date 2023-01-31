@@ -1,6 +1,6 @@
 import {Outlet} from "react-router-dom";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
-import {Grid} from "@mui/material";
+import {Box, Stack} from "@mui/material";
 import Header from "./Header";
 
 const appTheme = createTheme({
@@ -13,19 +13,30 @@ const appTheme = createTheme({
       xl: 1536,
     },
   },
+  typography: {
+    fontFamily: ['"Segoe UI"', "-apple-system", "BlinkMacSystemFont", "Roboto", '"Helvetica Neue"', "Arial", "sans-serif", '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"'].join(","),
+  },
+  palette: {
+    primary: {
+      main: "#fac50c",
+    },
+    secondary: {
+      main: "#52493e",
+    },
+  },
 });
 
 const Layout = () => {
   return (
     <ThemeProvider theme={appTheme}>
-      <Grid container direction="column" justifyContent="center" alignItems="center" height="100%" sx={{}}>
-        <Grid item component="header" width="100%">
+      <Stack direction="column" justifyContent="center" alignItems="stretch">
+        <Box component="header">
           <Header />
-        </Grid>
-        <Grid item component="main" sx={{margin: "2%"}}>
+        </Box>
+        <Box component="main" sx={{m: 2}}>
           <Outlet />
-        </Grid>
-      </Grid>
+        </Box>
+      </Stack>
     </ThemeProvider>
   );
 };
