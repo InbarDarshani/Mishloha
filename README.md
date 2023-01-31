@@ -47,13 +47,13 @@ The frontend is built with React and makes use of Material UI (MUI) for UI compo
 
 ### Backend
 To run the backend API, follow these steps:
-1.  Navigate to the backend directory
-2.  Restore necessary packages using dotnet restore
-3.  Build the solution using dotnet build
-4.  Run the API using dotnet run
+1.  Navigate to the directory \Backend\Mishloha.Api
+2.  Restore necessary packages using `dotnet restore`
+3.  Build the solution using `dotnet build`
+4.  Run the API using `dotnet run`
    
 ### Frontend
 To run the frontend, follow these steps:
-1.  Navigate to the frontend directory
-2.  Install necessary packages using npm install
-3. Start the application using npm start
+1.  Navigate to the directory \Frontend\client
+2.  Install necessary packages using `npm install`
+3. Start the application using `npm start`
