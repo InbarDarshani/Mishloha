@@ -25,7 +25,7 @@ const RepoDetailsModal = ({repo, isOpen, onClose}) => {
         <Typography>
           <b> Forks:</b> {repo.forksCount}
         </Typography>
-        <IconButton href={repo.url}>
+        <IconButton href={repo.url} target="_blank">
           <Tooltip title="View Repository">
             <GitHubIcon />
           </Tooltip>
