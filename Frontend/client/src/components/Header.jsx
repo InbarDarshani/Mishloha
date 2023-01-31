@@ -13,7 +13,7 @@ const Header = () => {
         <Toolbar>
           <Link href="/" color="inherit" underline="none" sx={{flexGrow: 1}}>
             <Typography variant="h5" sx={{textShadow: "gray 1px 1px"}}>
-              Mishloha Home Assignment
+              Github Repositories
             </Typography>
           </Link>
           <IconButton color="inherit" onClick={() => navigate("/favorites")}>
