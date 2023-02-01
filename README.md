@@ -37,7 +37,6 @@ The frontend is built with React and makes use of Material UI (MUI) for UI compo
 -   React-infinite-scroll-component - Used for implementing the repositories list infinite scroll and pagination
 
 ## Next steps and improvements
--   Implement search for the repositories list
 -   Consider total amount of repositories replied by Github API in the pagination logic
 -   Adding error logger to the backend
 -   Better object modelling for the Github API response
